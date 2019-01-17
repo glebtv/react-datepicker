@@ -13,7 +13,8 @@ const umdConfig = Object.assign({}, config, {
     "prop-types": "PropTypes",
     "react-onclickoutside": "onClickOutside",
     "react-popper": "ReactPopper",
-    classnames: "classNames"
+    classnames: "classNames",
+    "date-fns": "DateFns"
   }
 });
 

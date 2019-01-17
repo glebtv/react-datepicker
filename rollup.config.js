@@ -4,6 +4,13 @@ import commonjs from "rollup-plugin-commonjs";
 import { list as babelHelpersList } from "babel-helpers";
 import pkg from "./package.json";
 
+import fs from "fs";
+import path from "path";
+
+var dateFnsDirs = fs
+  .readdirSync(path.join(".", "node_modules", "date-fns"))
+  .map(d => `date-fns/${d}`);
+
 const config = {
   output: {
     format: process.env.BABEL_ENV
@@ -22,9 +29,8 @@ const config = {
     }),
     commonjs()
   ],
-  external: Object.keys(pkg.dependencies).concat(
-    Object.keys(pkg.peerDependencies)
-  )
+  external: Object.keys(pkg.dependencies)
+    .concat(Object.keys(pkg.peerDependencies))
+    .concat(dateFnsDirs)
 };
-
 export default config;
